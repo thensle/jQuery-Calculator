@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Calculator</title>
+
+    <!-- Added link to the jQuery Library -->
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+
+    <!-- Added a link to Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+</head>
+<body>
+
+<!-- Jumbotron for Title -->
+<div class="jumbotron">
+    <h1 class="text-center">jQuery Calculator</h1>
+    <h3 class="text-center">Perform basic mathematic operations using the power of jQuery!</h3>
+</div>
+
+<div class="container">
+
+    <div class="row">
+
+        <!-- Calculator Panel -->
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Calculator</h3>
+                </div>
+
+                <div class="panel-body">
+                    <button id="button-1" class="btn btn-primary number" value="1"><h1>1</h1></button>
+                    <button id="button-2" class="btn btn-primary number" value="2"><h1>2</h1></button>
+                    <button id="button-3" class="btn btn-primary number" value="3"><h1>3</h1></button>
+                    <button id="button-plus" class="btn btn-danger operator" value="plus"><h1>+</h1></button>
+                    <br><br>
+                    <button id="button-4" class="btn btn-primary number" value="4"><h1>4</h1></button>
+                    <button id="button-5" class="btn btn-primary number" value="5"><h1>5</h1></button>
+                    <button id="button-6" class="btn btn-primary number" value="6"><h1>6</h1></button>
+                    <button id="button-minus" class="btn btn-danger operator" value="minus"><h1>&minus;</h1></button>
+                    <br><br>
+                    <button id="button-7" class="btn btn-primary number" value="7"><h1>7</h1></button>
+                    <button id="button-8" class="btn btn-primary number" value="8"><h1>8</h1></button>
+                    <button id="button-9" class="btn btn-primary number" value="9"><h1>9</h1></button>
+                    <button id="button-multiply" class="btn btn-danger operator" value="times"><h1>&times;</h1></button>
+                    <br><br>
+                    <button id="button-0" class="btn btn-primary number" value="0"><h1>0</h1></button>
+                    <button id="button-divide" class="btn btn-danger operator" value="divide"><h1>&divide;</h1></button>
+                    <button id="button-power" class="btn btn-danger operator" value="power"><h1>^</h1></button>
+                    <button id="button-equal" class="btn btn-success equal" value="equals"><h1>=</h1></button>
+                    <br><br>
+                    <button id="button-clear" class="btn btn-default clear" value="clear"><h1>clear</h1></button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Result Panel -->
+        <div class="col-lg-6">
+        <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Result</h3>
+                </div>
+                <div class="panel-body display">
+                    <h1 id="first-number"></h1>
+                    <h1 id="operator"></h1>
+                    <h1 id="second-number"></h1>
+                    <hr>
+                    <h1 id="result"></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+var result;
+var gameNumber = 1;
+var gameState = {
+    firstNumber: 0,
+    secondNumber: 0,
+    operatorSelected: ""
+};
+
+// Add numbers to the click of the buttons; create empty array to store the two numbers and store these numbers in the array
+if(gameNumber === 1){
+    $("#button-1").on("click", function() {
+            gameState.firstNumber = 1;
+            $("#first-number").html(gameState.firstNumber);
+        });
+    $("#button-2").on("click", function() {
+            gameState.firstNumber = 2;
+            $("#first-number").html(gameState.firstNumber);
+        });
+    $("#button-3").on("click", function() {
+            gameState.firstNumber = 3;
+            $("#first-number").html(gameState.firstNumber);
+        });
+    $("#button-4").on("click", function() {
+            gameState.firstNumber = 4;
+            $("#first-number").html(gameState.firstNumber);
+        });
+    $("#button-5").on("click", function() {
+            gameState.firstNumber = 5;
+            $("#first-number").html(gameState.firstNumber);
+        });
+    $("#button-6").on("click", function() {
+            gameState.firstNumber = 6;
+            $("#first-number").html(gameState.firstNumber);
+        });
+    $("#button-7").on("click", function() {
+            gameState.firstNumber = 7;
+            $("#first-number").html(gameState.firstNumber);
+        });
+    $("#button-8").on("click", function() {
+            gameState.firstNumber = 8;
+            $("#first-number").html(gameState.firstNumber);
+        });
+    $("#button-9").on("click", function() {
+            gameState.firstNumber = 9;
+            $("#first-number").html(gameState.firstNumber);
+        });
+    $("#button-0").on("click", function() {
+            gameState.firstNumber = 0;
+            $("#first-number").html(gameState.firstNumber);
+        });
+    }
+
+if (gameNumber === 2){
+    $("#button-1").on("click", function() {
+            gameState.secondNumber = 1;
+            $("#second-number").append(gameState.secondNumber);
+        });
+    $("#button-2").on("click", function() {
+            gameState.secondNumber = 2;
+            $("#second-number").append(gameState.secondNumber);
+        });
+    $("#button-3").on("click", function() {
+            gameState.secondNumber = 3;
+            $("#second-number").append(gameState.secondNumber);
+        });
+    $("#button-4").on("click", function() {
+            gameState.secondNumber = 4;
+            $("#second-number").append(gameState.secondNumber);
+        });
+    $("#button-5").on("click", function() {
+            gameState.secondNumber = 5;
+            $("#second-number").append(gameState.secondNumber);
+        });
+    $("#button-6").on("click", function() {
+            gameState.secondNumber = 6;
+            $("#second-number").append(gameState.secondNumber);
+        });
+    $("#button-7").on("click", function() {
+            gameState.secondNumber = 7;
+            $("#second-number").append(gameState.secondNumber);
+        });
+    $("#button-8").on("click", function() {
+            gameState.secondNumber = 8;
+            $("#second-number").append(gameState.secondNumber);
+        });
+    $("#button-9").on("click", function() {
+            gameState.secondNumber = 9;
+            $("#second-number").append(gameState.secondNumber);
+        });
+    $("#button-0").on("click", function() {
+            gameState.secondNumber = 0;
+            $("#second-number").append(gameState.secondNumber);
+        });
+}
+// Create add, subtract, multiply, divide, and power functions on the click on the respective button for two numbers
+
+    $("#button-plus").on("click", function plus(){
+        gameState.operatorSelected = "plus";
+        gameNumber = 2;
+        $("#operator").append("+");
+
+    });
+
+    $("#button-minus").on("click", function minus(){
+        gameState.operatorSelected = "minus";
+        gameNumber = 2;
+        $("#operator").append("-");
+    });
+
+    $("#button-times").on("click", function times(){
+        gameState.operatorSelected = "times";
+        gameNumber = 2;
+        $("#operator").append("*");
+    });
+
+    $("#button-divide").on("click", function divide(){
+        gameState.operatorSelected = "divide";
+        gameNumber = 2;
+        $("#operator").append("/");
+    });
+
+    $("#button-power").on("click", function power(){
+        gameState.operatorSelected = "power";
+        gameNumber = 2;
+        $("#operator").append("^");
+    });
+
+// Equal button click; if statement based on the function of the button selected; displays result in the #result div
+    $("#button-equal").on("click", function doIt(){
+        if(gameState.operatorSelected === "plus"){
+            result = gameState.firstNumber + gameState.secondNumber;
+        }
+
+        if(gameState.operatorSelected === "minus"){
+            result = gameState.firstNumber - gameState.secondNumber;
+        }
+
+        if(gameState.operatorSelected === "times"){
+            result = gameState.firstNumber * gameState.secondNumber;
+        }
+
+        if(gameState.operatorSelected === "divide"){
+            result = gameState.firstNumber / gameState.secondNumber;
+        }
+
+        if(gameState.operatorSelected === "power"){
+            result = gameState.firstNumber ^ gameState.secondNumber;
+        }
+
+        console.log(result);
+    });
+
+//Displaying the result
+
+$("#result").html(result);
+
+//Clear button, function to reset the array
+
+$("#button-clear").on("click", function(){
+          $("#display").empty();
+
+      });
+
+
+});
+
+</script>
+
+</body>
+</html>
